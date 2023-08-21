@@ -1,6 +1,4 @@
 node_modules
 dist
 dist-types
-app-config.yaml
-yarn.lock
 .env
