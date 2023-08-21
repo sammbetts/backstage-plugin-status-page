@@ -3,4 +3,4 @@ dist
 dist-types
 app-config.yaml
 yarn.lock
-.npmrc
+.env
