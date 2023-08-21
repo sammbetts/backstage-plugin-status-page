@@ -1,5 +1,5 @@
-import React from 'react';
-import { DateTime } from 'luxon';
+import React from "react";
+import { DateTime } from "luxon";
 import {
   Avatar,
   Box,
@@ -12,15 +12,15 @@ import {
   createStyles,
   makeStyles,
   withStyles,
-} from '@material-ui/core';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+} from "@material-ui/core";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 interface Props {
   service: string;
-  status?: string;
+  status?: string | any;
   updated: string;
   link: string;
   logo?: string;
@@ -31,86 +31,86 @@ interface Props {
 
 const useStyles = makeStyles({
   service: {
-    fontWeight: 'bold',
-    fontSize: '1.1rem',
+    fontWeight: "bold",
+    fontSize: "1.1rem",
   },
   product: {
-    fontWeight: 'bold',
-    fontSize: '0.9rem',
-    marginLeft: '100px',
+    fontWeight: "bold",
+    fontSize: "0.9rem",
+    marginLeft: "100px",
   },
   serviceIcon: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   icon: {
-    width: '3.3rem',
-    height: '3.3rem',
+    width: "3.3rem",
+    height: "3.3rem",
   },
   incident: {
-    color: 'red',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    color: "red",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   noIncident: {
-    color: 'green',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    color: "green",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   incidentIcon: {
-    fontSize: '2rem',
-    fontWeight: 'bold',
+    fontSize: "2rem",
+    fontWeight: "bold",
   },
 });
 
 export const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: '10px',
-      color: 'black',
-      fontSize: '1rem',
-      width: '350px',
-      borderBottom: '1.5px groove #F3F3F3',
-      backgroundColor: '#F3F3F3',
+      padding: "10px",
+      color: "black",
+      fontSize: "1rem",
+      width: "350px",
+      borderBottom: "1.5px groove #F3F3F3",
+      backgroundColor: "#F3F3F3",
     },
-  }),
+  })
 )(TableCell);
 
 export const StyledTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: '25px 40px 25px 10px',
-      color: 'grey',
-      width: '350px',
-      backgroundColor: '#FFFFFF',
+      padding: "25px 40px 25px 10px",
+      color: "grey",
+      width: "350px",
+      backgroundColor: "#FFFFFF",
     },
-  }),
+  })
 )(TableCell);
 
 export const StyledSmallTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: '10px',
-      color: 'grey',
-      width: '170px',
-      borderBottom: '1.5px groove #F3F3F3',
-      backgroundColor: '#F3F3F3',
+      padding: "10px",
+      color: "grey",
+      width: "170px",
+      borderBottom: "1.5px groove #F3F3F3",
+      backgroundColor: "#F3F3F3",
     },
-  }),
+  })
 )(TableCell);
 
 export const StyledSmallTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: '10px',
-      color: 'grey',
-      width: '170px',
-      backgroundColor: '#FFFFFF',
-      borderEndEndRadius: '10rem',
+      padding: "10px",
+      color: "grey",
+      width: "170px",
+      backgroundColor: "#FFFFFF",
+      borderEndEndRadius: "10rem",
     },
-  }),
+  })
 )(TableCell);
 
 export function convertToUKDateTimeFormat(isoDateString: string): string {
@@ -122,11 +122,11 @@ export function convertToUKDateTimeFormat(isoDateString: string): string {
   const hours = dateTime.hour;
   const minutes = dateTime.minute;
 
-  return `${day.toString().padStart(2, '0')}/${month
+  return `${day.toString().padStart(2, "0")}/${month
     .toString()
-    .padStart(2, '0')}/${year}, ${hours.toString().padStart(2, '0')}:${minutes
+    .padStart(2, "0")}/${year}, ${hours.toString().padStart(2, "0")}:${minutes
     .toString()
-    .padStart(2, '0')}`;
+    .padStart(2, "0")}`;
 }
 
 export const StyledTableExpandedRow = (props: Props) => {
@@ -163,7 +163,7 @@ export const StyledTableRow = (props: Props) => {
         <StyledTableCell className={classes.service}>
           <Box className={classes.serviceIcon}>
             <IconButton
-              style={{ margin: '0 10px 0 15px' }}
+              style={{ margin: "0 10px 0 15px" }}
               href={link}
               target="_blank"
             >
@@ -176,9 +176,9 @@ export const StyledTableRow = (props: Props) => {
           {incidents ? (
             <>
               {status ? (
-                <Typography style={{ color: 'red' }}>{status}</Typography>
+                <Typography style={{ color: "red" }}>{status}</Typography>
               ) : (
-                <Typography style={{ color: 'red' }}>
+                <Typography style={{ color: "red" }}>
                   Ongoing Incidents
                 </Typography>
               )}
@@ -203,7 +203,7 @@ export const StyledTableRow = (props: Props) => {
           ) : (
             <div className={classes.noIncident}>
               <CheckCircleOutlineIcon className={classes.incidentIcon} />
-              <div style={{ width: '4.7rem' }} />
+              <div style={{ width: "4.7rem" }} />
             </div>
           )}
         </StyledSmallTableCell>

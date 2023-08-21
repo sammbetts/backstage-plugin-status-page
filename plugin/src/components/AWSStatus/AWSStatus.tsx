@@ -66,7 +66,7 @@ export const AWSStatus: React.FC = () => {
               key={incident.incident_id}
               service={incident.impacted_services.service_name.join(', ')}
               status={''}
-              updated={''}
+              updated={convertUnixTimestampToUKDate(incident.date)}
               link=""
               isOpen={open}
             />

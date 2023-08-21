@@ -1,5 +1,5 @@
 {
-  "name": "@internal/plugin-status-page",
+  "name": "@sammbetts/backstage-plugin-status-page",
   "version": "0.1.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
@@ -44,6 +44,7 @@
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^14.0.0",
+    "@types/luxon": "^3.3.1",
     "@types/node": "*",
     "msw": "^1.0.0"
   },
