@@ -1,1 +1,1 @@
-export { statusPagePlugin, StatusPage } from './plugin';
+export { StatusPage } from './plugin';

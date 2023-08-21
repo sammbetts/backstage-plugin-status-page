@@ -51,7 +51,7 @@ export const CloudFlareStatus: React.FC = () => {
            service={incident.components[0].name}
            status={
              <>
-               {incident.name}:<br></br>
+               <b>{incident.name}</b><br></br>
                {incident.incident_updates[0].body}
              </>
            }

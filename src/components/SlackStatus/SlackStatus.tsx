@@ -50,7 +50,7 @@ export const SlackStatus: React.FC = () => {
             service={incident.services.join(', ')}
             status={
               <>
-                {incident.status} {incident.type}:
+                <b>{incident.status} {incident.type}:</b>
                 <br />
                 {incident.title}
               </>
