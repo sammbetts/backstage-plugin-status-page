@@ -2,7 +2,6 @@ import React from "react";
 import { Content, Header, Page } from "@backstage/core-components";
 import { Table, makeStyles } from "@material-ui/core";
 import {
-  AWSStatus,
   CircleCIStatus,
   CloudFlareStatus,
   DataDogStatus,
@@ -28,7 +27,6 @@ export const DataTable = () => {
       />
       <Content className={classes.content}>
         <Table>
-          <AWSStatus />
           <CloudFlareStatus />
           <CircleCIStatus />
           <DataDogStatus />
