@@ -69,5 +69,14 @@
   "files": [
     "dist"
   ],
-  "prettier": "@spotify/prettier-config"
+  "prettier": "@spotify/prettier-config",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]  
+  }
 }
