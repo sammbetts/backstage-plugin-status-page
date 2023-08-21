@@ -1,7 +1,7 @@
 {
   "name": "@sammbetts/backstage-plugin-status-page",
   "description": "A backstage plugin for showing third party status and incidents",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "repository": "https://github.com/sammbetts/backstage-plugin-status-page",
   "main": "/src/index.ts",
   "types": "/src/index.ts",
@@ -30,19 +30,16 @@
     "@backstage/core-plugin-api": "^1.5.3",
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
-    "@types/react": "17",
-    "@types/react-dom": "17",
     "axios": "^1.4.0",
     "luxon": "^3.4.0",
-    "react": "17.0.2",
-    "react-dom": "17",
-    "react-use": "^17.4.0",
-    "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0",
-    "typescript": "~5.0.0"
+    "react-use": "^17.2.4",
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^16.13.1 || ^17.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@backstage/cli": "^0.22.9",
@@ -52,13 +49,21 @@
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^14.0.0",
-    "@types/luxon": "^3.3.1"
+    "@types/luxon": "^3.3.1",
+    "react": "^17.0.2",
+    "react-dom": "17",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "files": [
     "dist"
-  ],
-  "resolutions": {
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2"
-  }
+  ]
 }
