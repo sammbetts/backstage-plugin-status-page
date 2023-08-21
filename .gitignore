@@ -3,3 +3,4 @@ dist
 dist-types
 .env
 .npmrc
+.npmignore
