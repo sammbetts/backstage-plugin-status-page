@@ -1,6 +1,6 @@
 {
   "name": "@sammbetts/backstage-plugin-status-page",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": "https://github.com/sammbetts/backstage-plugin-status-page",
   "main": "/src/index.ts",
   "types": "/src/index.ts",
