@@ -19,7 +19,6 @@ export const CloudFlareStatus: React.FC = () => {
       .then(response => response.json())
       .then(data => {
         const { status, page, incidents } = data;
-        console.log(data);
         setStatusData({
           status: status.description,
           updated: page.updated_at,
