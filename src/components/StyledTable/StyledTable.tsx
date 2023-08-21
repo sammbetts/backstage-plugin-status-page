@@ -2,7 +2,6 @@ import React from "react";
 import { DateTime } from "luxon";
 import {
   Avatar,
-  Box,
   Collapse,
   IconButton,
   Table,
@@ -65,7 +64,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const StyledTableCell = withStyles(() =>
+const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
       padding: "10px",
@@ -78,7 +77,7 @@ export const StyledTableCell = withStyles(() =>
   })
 )(TableCell);
 
-export const StyledTableCellExpanded = withStyles(() =>
+const StyledTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
       padding: "25px 40px 25px 10px",
@@ -89,7 +88,7 @@ export const StyledTableCellExpanded = withStyles(() =>
   })
 )(TableCell);
 
-export const StyledSmallTableCell = withStyles(() =>
+const StyledSmallTableCell = withStyles(() =>
   createStyles({
     root: {
       padding: "10px",
@@ -101,7 +100,7 @@ export const StyledSmallTableCell = withStyles(() =>
   })
 )(TableCell);
 
-export const StyledSmallTableCellExpanded = withStyles(() =>
+const StyledSmallTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
       padding: "10px",
@@ -161,7 +160,7 @@ export const StyledTableRow = (props: Props) => {
     <>
       <TableRow>
         <StyledTableCell className={classes.service}>
-          <Box className={classes.serviceIcon}>
+          <div className={classes.serviceIcon}>
             <IconButton
               style={{ margin: "0 10px 0 15px" }}
               href={link}
@@ -170,7 +169,7 @@ export const StyledTableRow = (props: Props) => {
               <Avatar className={classes.icon} alt="logo" src={logo} />
             </IconButton>
             {service}
-          </Box>
+          </div>
         </StyledTableCell>
         <StyledTableCell>
           {incidents ? (
