@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import {
   StyledTableRow,
   StyledTableExpandedRow,
   convertToUKDateTimeFormat,
-} from '../StyledTable';
-import DataDog from '../../assets/datadog.png';
+} from "../StyledTable";
+import DataDog from "../../assets/datadog.png";
 
 export const DataDogStatus: React.FC = () => {
   const [statusData, setStatusData] = React.useState<any | null>(null);
@@ -15,9 +15,9 @@ export const DataDogStatus: React.FC = () => {
   };
 
   React.useEffect(() => {
-    fetch('https://status.datadoghq.com/api/v2/summary.json')
-      .then(response => response.json())
-      .then(data => {
+    fetch("https://status.datadoghq.com/api/v2/summary.json")
+      .then((response) => response.json())
+      .then((data) => {
         const { status, page, incidents } = data;
         setStatusData({
           status: status.description,
@@ -25,7 +25,7 @@ export const DataDogStatus: React.FC = () => {
           incidents: incidents,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         <div>Error fetching DataDog service status: {error}</div>;
       });
   }, []);
@@ -46,8 +46,13 @@ export const DataDogStatus: React.FC = () => {
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.incident_id}
-          service={incident.name}
-          status={incident.impact}
+          service={incident.components[0].name}
+          status={
+            <>
+              {incident.name}:<br></br>
+              {incident.incident_updates[0].body}
+            </>
+          }
           updated={convertToUKDateTimeFormat(incident.updated_at)}
           link=""
           isOpen={open}

@@ -19,6 +19,7 @@ export const CloudFlareStatus: React.FC = () => {
       .then(response => response.json())
       .then(data => {
         const { status, page, incidents } = data;
+        console.log(data);
         setStatusData({
           status: status.description,
           updated: page.updated_at,
@@ -45,14 +46,19 @@ export const CloudFlareStatus: React.FC = () => {
           />
         ) : null}
         {statusData?.incidents.map((incident: any) => (
-          <StyledTableExpandedRow
-            key={incident.incident_id}
-            service={incident.name}
-            status={incident.impact}
-            updated={convertToUKDateTimeFormat(incident.date_updated)}
-            link=""
-            isOpen={open}
-          />
+           <StyledTableExpandedRow
+           key={incident.incident_id}
+           service={incident.components[0].name}
+           status={
+             <>
+               {incident.name}:<br></br>
+               {incident.incident_updates[0].body}
+             </>
+           }
+           updated={convertToUKDateTimeFormat(incident.updated_at)}
+           link=""
+           isOpen={open}
+         />
         ))}
       </>
     </>

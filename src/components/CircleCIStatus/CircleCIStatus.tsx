@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import {
   StyledTableRow,
   StyledTableExpandedRow,
   convertToUKDateTimeFormat,
-} from '../StyledTable';
-import CircleCI from '../../assets/circleci.png';
+} from "../StyledTable";
+import CircleCI from "../../assets/circleci.png";
 
 export const CircleCIStatus: React.FC = () => {
   const [statusData, setStatusData] = React.useState<any | null>(null);
@@ -15,9 +15,9 @@ export const CircleCIStatus: React.FC = () => {
   };
 
   React.useEffect(() => {
-    fetch('https://status.circleci.com/api/v2/summary.json')
-      .then(response => response.json())
-      .then(data => {
+    fetch("https://status.circleci.com/api/v2/summary.json")
+      .then((response) => response.json())
+      .then((data) => {
         const { status, page, incidents } = data;
         setStatusData({
           status: status.description,
@@ -25,7 +25,7 @@ export const CircleCIStatus: React.FC = () => {
           incidents: incidents,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         <div>Error fetching CircleCI service status: {error}</div>;
       });
   }, []);
@@ -40,7 +40,7 @@ export const CircleCIStatus: React.FC = () => {
           link="https://status.circleci.com/"
           logo={CircleCI}
           incidents={
-            statusData.status === 'All Systems Operational' ? false : true
+            statusData.status === "All Systems Operational" ? false : true
           }
           onToggle={handleToggle}
         />
@@ -48,8 +48,13 @@ export const CircleCIStatus: React.FC = () => {
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.incident_id}
-          service={incident.name}
-          status={`${incident.impact}: ${incident.incident_updates.body}`}
+          service={incident.components[0].name}
+          status={
+            <>
+              {incident.name}:<br></br>
+              {incident.incident_updates[0].body}
+            </>
+          }
           updated={convertToUKDateTimeFormat(incident.updated_at)}
           link=""
           isOpen={open}
