@@ -68,11 +68,10 @@ const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
       padding: "10px",
-      color: "black",
       fontSize: "1rem",
       width: "350px",
       borderBottom: "1.5px groove #F3F3F3",
-      backgroundColor: "#F3F3F3",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
     },
   })
 )(TableCell);
@@ -83,7 +82,6 @@ const StyledTableCellExpanded = withStyles(() =>
       padding: "25px 40px 25px 10px",
       color: "grey",
       width: "350px",
-      backgroundColor: "#FFFFFF",
     },
   })
 )(TableCell);
@@ -95,7 +93,7 @@ const StyledSmallTableCell = withStyles(() =>
       color: "grey",
       width: "170px",
       borderBottom: "1.5px groove #F3F3F3",
-      backgroundColor: "#F3F3F3",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
     },
   })
 )(TableCell);
@@ -106,8 +104,6 @@ const StyledSmallTableCellExpanded = withStyles(() =>
       padding: "10px",
       color: "grey",
       width: "170px",
-      backgroundColor: "#FFFFFF",
-      borderEndEndRadius: "10rem",
     },
   })
 )(TableCell);

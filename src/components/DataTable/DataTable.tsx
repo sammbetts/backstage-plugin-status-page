@@ -1,30 +1,19 @@
-import React from 'react';
-import { Content, Header, Page } from '@backstage/core-components';
+import React from "react";
+import { Content, Header, Page } from "@backstage/core-components";
+import { Table, makeStyles } from "@material-ui/core";
 import {
-  Table,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-  makeStyles,
-} from '@material-ui/core';
-import {
+  AWSStatus,
   CircleCIStatus,
   CloudFlareStatus,
   DataDogStatus,
   GitHubStatus,
   GCPStatus,
   SlackStatus,
-} from '..';
+} from "..";
 
 const useStyles = makeStyles({
   content: {
-    padding: '40px 80px 40px 80px',
-  },
-  tableHead: {
-    fontWeight: 'bolder',
-    fontSize: '1.3rem',
-    color: '#DE1C8C',
+    padding: "40px 80px 40px 80px",
   },
 });
 
@@ -39,28 +28,13 @@ export const DataTable = () => {
       />
       <Content className={classes.content}>
         <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <Typography className={classes.tableHead}>SERVICE</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography className={classes.tableHead}>STATUS</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography className={classes.tableHead}>UPDATED</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography className={classes.tableHead}>INCIDENTS</Typography>
-              </TableCell>
-            </TableRow>
-            <CloudFlareStatus />
-            <CircleCIStatus />
-            <DataDogStatus />
-            <GitHubStatus />
-            <GCPStatus />
-            <SlackStatus />
-          </TableHead>
+          <AWSStatus />
+          <CloudFlareStatus />
+          <CircleCIStatus />
+          <DataDogStatus />
+          <GitHubStatus />
+          <GCPStatus />
+          <SlackStatus />
         </Table>
       </Content>
     </Page>
