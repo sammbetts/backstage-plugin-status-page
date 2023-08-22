@@ -24,7 +24,7 @@ const routes = (
 Add the **Status Page** icon to the Sidebar in `packages/app/src/components/Root/Root.tsx`:
 
 ```diff
-+ import CheckCircleOutlineIcon from '@material-ui/icons/Dashboard';
++ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
   <SidebarGroup label="Menu" icon={<MenuIcon />}>
     ...
