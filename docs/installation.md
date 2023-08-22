@@ -9,6 +9,8 @@ npm install @sammbetts/backstage-plugin-status-page
 Modify your app routes in `packages/app/src/App.tsx`:
 
 ```diff
++ import { StatusPage } from '@sammbetts/backstage-plugin-bulletin-board';
+
 const routes = (
 
   <FlatRoutes>
