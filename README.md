@@ -1,13 +1,26 @@
-# status-page
+# Backstage Plugin - status-page
 
-Welcome to the status-page plugin!
+Welcome to the status-page plugin for [Backstage!](https://backstage.io/)
 
-_This plugin was created through the Backstage CLI_
+This plugin displays the status and active incidents of third party services directly in Backstage.
+
+### Plugin Features:
+
+- This plugin uses the third party services public status API.
+- Real time display of services current status.
+- If an active incident is happening the drop down will appear to display more details.
+- Only the most recent incident update message is displayed.
+
+<br/>
+Status page default display:
+
+![img](docs/assets/img1.png)
+
+When an ongoing incident is happening, the drop down tables become available to open for more information:
+
+![img](docs/assets/img2.png)
 
 ## Getting started
 
-Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/status-page](http://localhost:3000/status-page).
-
-You can also serve the plugin in isolation by running `yarn start` in the plugin directory.
-This method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.
-It is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.
+- [Installation instructions](docs/installation.md)
+- [Contributing guide](docs/contributing.md)
