@@ -71,6 +71,7 @@
   "files": [
     "dist"
   ],
+  "packageManager": "yarn@3.2.4",
   "prettier": "@spotify/prettier-config",
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [

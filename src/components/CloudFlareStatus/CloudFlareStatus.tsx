@@ -1,10 +1,10 @@
 import React from 'react';
-import CloudFlare from '../../assets/cloudflare.png';
 import {
   StyledTableRow,
   StyledTableExpandedRow,
-  convertToUKDateTimeFormat,
 } from '../StyledTable';
+import { convertToUKDateTimeFormat } from '../utils';
+import CloudFlare from '../../assets/cloudflare.png';
 
 export const CloudFlareStatus: React.FC = () => {
   const [statusData, setStatusData] = React.useState<any | null>(null);
@@ -32,8 +32,7 @@ export const CloudFlareStatus: React.FC = () => {
 
   return (
     <>
-      <>
-        {statusData ? (
+        {statusData &&
           <StyledTableRow
             service="CloudFlare"
             status={statusData.status}
@@ -43,14 +42,14 @@ export const CloudFlareStatus: React.FC = () => {
             incidents={statusData.incidents.length > 0}
             onToggle={handleToggle}
           />
-        ) : null}
+        }
         {statusData?.incidents.map((incident: any) => (
            <StyledTableExpandedRow
            key={incident.incident_id}
            service={incident.components[0].name}
            status={
              <>
-               <b>{incident.name}</b><br></br>
+               <b>{incident.name}</b><br/>
                {incident.incident_updates[0].body}
              </>
            }
@@ -60,6 +59,5 @@ export const CloudFlareStatus: React.FC = () => {
          />
         ))}
       </>
-    </>
   );
 };

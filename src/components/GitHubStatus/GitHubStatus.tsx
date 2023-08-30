@@ -32,7 +32,7 @@ export const GitHubStatus: React.FC = () => {
 
   return (
     <>
-      {statusData ? (
+      {statusData &&
         <StyledTableRow
           service="GitHub"
           status={statusData.status}
@@ -42,14 +42,14 @@ export const GitHubStatus: React.FC = () => {
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
         />
-      ) : null}
+      }
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.incident_id}
           service={incident.components[0].name}
           status={
             <>
-              <b>{incident.name}</b><br></br>
+              <b>{incident.name}</b><br/>
               {incident.incident_updates[0].body}
             </>
           }

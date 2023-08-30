@@ -3,8 +3,8 @@ import axios from 'axios';
 import {
   StyledTableRow,
   StyledTableExpandedRow,
-  convertToUKDateTimeFormat,
 } from '../StyledTable';
+import { convertToUKDateTimeFormat } from '../utils';
 import GCP from '../../assets/gcp.png';
 
 interface Incident {
@@ -51,17 +51,17 @@ export const GCPStatus: React.FC = () => {
         onToggle={handleToggle}
       />
       {statusData.length > 0
-        ? statusData.map(incident => (
-            <StyledTableExpandedRow
-              key={incident.incident_id}
-              service={incident.service_name}
-              status={incident.external_desc}
-              updated={convertToUKDateTimeFormat(incident.modified)}
-              link=""
-              isOpen={open}
-            />
-          ))
-        : null}
+        && statusData.map(incident => (
+          <StyledTableExpandedRow
+            key={incident.incident_id}
+            service={incident.service_name}
+            status={incident.external_desc}
+            updated={convertToUKDateTimeFormat(incident.modified)}
+            link=""
+            isOpen={open}
+          />
+        ))
+      }
     </>
   );
 };

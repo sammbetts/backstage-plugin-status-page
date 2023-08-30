@@ -2,8 +2,8 @@ import React from "react";
 import {
   StyledTableRow,
   StyledTableExpandedRow,
-  convertToUKDateTimeFormat,
 } from "../StyledTable";
+import { convertToUKDateTimeFormat } from '../utils';
 import CircleCI from "../../assets/circleci.png";
 
 export const CircleCIStatus: React.FC = () => {
@@ -32,7 +32,7 @@ export const CircleCIStatus: React.FC = () => {
 
   return (
     <>
-      {statusData ? (
+      {statusData &&
         <StyledTableRow
           service="CircleCI"
           status={statusData.status}
@@ -44,14 +44,14 @@ export const CircleCIStatus: React.FC = () => {
           }
           onToggle={handleToggle}
         />
-      ) : null}
+      }
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.incident_id}
           service={incident.components[0].name}
           status={
             <>
-              <b>{incident.name}</b><br></br>
+              <b>{incident.name}</b><br/>
               {incident.incident_updates[0].body}
             </>
           }

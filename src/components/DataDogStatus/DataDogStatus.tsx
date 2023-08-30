@@ -2,9 +2,9 @@ import React from "react";
 import {
   StyledTableRow,
   StyledTableExpandedRow,
-  convertToUKDateTimeFormat,
 } from "../StyledTable";
 import DataDog from "../../assets/datadog.png";
+import { convertToUKDateTimeFormat } from '../utils';
 
 export const DataDogStatus: React.FC = () => {
   const [statusData, setStatusData] = React.useState<any | null>(null);
@@ -32,7 +32,7 @@ export const DataDogStatus: React.FC = () => {
 
   return (
     <>
-      {statusData ? (
+      {statusData &&
         <StyledTableRow
           service="DataDog"
           status={statusData.status}
@@ -42,14 +42,14 @@ export const DataDogStatus: React.FC = () => {
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
         />
-      ) : null}
+      }
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.incident_id}
           service={incident.components[0].name}
           status={
             <>
-              <b>{incident.name}</b><br></br>
+              <b>{incident.name}</b><br/>
               {incident.incident_updates[0].body}
             </>
           }
