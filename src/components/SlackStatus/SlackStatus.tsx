@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  StyledTableRow,
-  StyledTableExpandedRow,
-} from '../StyledTable';
+import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
 import { convertToUKDateTimeFormat } from '../../utils';
 import Slack from '../../assets/slack.png';
 
@@ -32,25 +29,29 @@ export const SlackStatus: React.FC = () => {
 
   return (
     <>
-      {statusData &&
+      {statusData && (
         <StyledTableRow
           service="Slack"
-          status={`${statusData.status} ${statusData.status === 'ok' ? '' : 'incident'}`}
+          status={`${statusData.status} ${
+            statusData.status === 'ok' ? '' : 'incident'
+          }`}
           updated={convertToUKDateTimeFormat(statusData.updated)}
           link="https://status.slack.com/"
           logo={Slack}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
         />
-      }
+      )}
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.id}
           service={incident.services.join(', ')}
           status={
             <>
-              <b>{incident.status} {incident.type}</b>
-              <br/>
+              <b>
+                {incident.status} {incident.type}
+              </b>
+              <br />
               {incident.title}
             </>
           }

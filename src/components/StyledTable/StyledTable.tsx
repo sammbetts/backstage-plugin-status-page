@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Avatar,
   Box,
@@ -12,11 +12,11 @@ import {
   createStyles,
   makeStyles,
   withStyles,
-} from "@material-ui/core";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+} from '@material-ui/core';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 interface Props {
   service: string;
@@ -31,89 +31,89 @@ interface Props {
 
 const useStyles = makeStyles({
   service: {
-    fontWeight: "bold",
-    fontSize: "1.1rem",
+    fontWeight: 'bold',
+    fontSize: '1.1rem',
   },
   product: {
-    fontWeight: "bold",
-    fontSize: "0.9rem",
-    marginLeft: "100px",
+    fontWeight: 'bold',
+    fontSize: '0.9rem',
+    marginLeft: '100px',
   },
   serviceIcon: {
-    display: "flex",
-    alignItems: "center",
-    fontWeight: "bold",
+    display: 'flex',
+    alignItems: 'center',
+    fontWeight: 'bold',
   },
   emptyIcon: {
-    margin: "0 10px 0 10px",    
-    padding: "12px",
-    minWidth: "72px",
-    minHeight: "72px",
+    margin: '0 10px 0 10px',
+    padding: '12px',
+    minWidth: '72px',
+    minHeight: '72px',
   },
   icon: {
-    width: "3rem",
-    height: "3rem",
+    width: '3rem',
+    height: '3rem',
   },
   incident: {
-    color: "red",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    color: 'red',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   noIncident: {
-    color: "green",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    color: 'green',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   incidentIcon: {
-    fontSize: "2rem",
-    fontWeight: "bold",
+    fontSize: '2rem',
+    fontWeight: 'bold',
   },
 });
 
 const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: "15px 30px 15px 15px",
-      fontSize: "1rem",
-      width: "350px",
-      borderBottom: "1.5px groove #F3F3F3",
-      backgroundColor: "rgba(0, 0, 0, 0.1)",
+      padding: '15px 30px 15px 15px',
+      fontSize: '1rem',
+      width: '350px',
+      borderBottom: '1.5px groove #F3F3F3',
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
-  })
+  }),
 )(TableCell);
 
 const StyledTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: "15px 30px 15px 15px",
-      color: "grey",
-      width: "350px",
+      padding: '15px 30px 15px 15px',
+      color: 'grey',
+      width: '350px',
     },
-  })
+  }),
 )(TableCell);
 
 const StyledSmallTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: "15px",
-      color: "grey",
-      width: "170px",
-      borderBottom: "1.5px groove #F3F3F3",
-      backgroundColor: "rgba(0, 0, 0, 0.1)",
+      padding: '15px',
+      color: 'grey',
+      width: '170px',
+      borderBottom: '1.5px groove #F3F3F3',
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
-  })
+  }),
 )(TableCell);
 
 const StyledSmallTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: "15px",
-      color: "grey",
-      width: "170px",
+      padding: '15px',
+      color: 'grey',
+      width: '170px',
     },
-  })
+  }),
 )(TableCell);
 
 export const StyledTableExpandedRow = (props: Props) => {
@@ -127,7 +127,7 @@ export const StyledTableExpandedRow = (props: Props) => {
           <Table>
             <StyledTableCellExpanded>
               <div className={classes.serviceIcon}>
-                <Box className={classes.emptyIcon}/>
+                <Box className={classes.emptyIcon} />
                 {service}
               </div>
             </StyledTableCellExpanded>
@@ -136,7 +136,9 @@ export const StyledTableExpandedRow = (props: Props) => {
               {updated}
             </StyledSmallTableCellExpanded>
             <StyledSmallTableCellExpanded>
-              <Link href={link} target="_blank" style={{marginLeft: '20%'}}>More...</Link>
+              <Link href={link} target="_blank" style={{ marginLeft: '20%' }}>
+                More...
+              </Link>
             </StyledSmallTableCellExpanded>
           </Table>
         </Collapse>
@@ -156,7 +158,7 @@ export const StyledTableRow = (props: Props) => {
         <StyledTableCell className={classes.service}>
           <div className={classes.serviceIcon}>
             <IconButton
-              style={{ margin: "0 10px 0 10px" }}
+              style={{ margin: '0 10px 0 10px' }}
               href={link}
               target="_blank"
             >
@@ -169,9 +171,9 @@ export const StyledTableRow = (props: Props) => {
           {incidents ? (
             <>
               {status ? (
-                <Typography style={{ color: "red" }}>{status}</Typography>
+                <Typography style={{ color: 'red' }}>{status}</Typography>
               ) : (
-                <Typography style={{ color: "red" }}>
+                <Typography style={{ color: 'red' }}>
                   Ongoing Incidents
                 </Typography>
               )}
@@ -196,7 +198,7 @@ export const StyledTableRow = (props: Props) => {
           ) : (
             <div className={classes.noIncident}>
               <CheckCircleOutlineIcon className={classes.incidentIcon} />
-              <div style={{ width: "4.7rem" }} />
+              <div style={{ width: '4.7rem' }} />
             </div>
           )}
         </StyledSmallTableCell>

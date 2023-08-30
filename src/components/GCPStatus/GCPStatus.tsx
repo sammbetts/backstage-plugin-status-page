@@ -1,9 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {
-  StyledTableRow,
-  StyledTableExpandedRow,
-} from '../StyledTable';
+import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
 import { convertToUKDateTimeFormat } from '../../utils';
 import GCP from '../../assets/gcp.png';
 
@@ -40,7 +37,6 @@ export const GCPStatus: React.FC = () => {
       }
     }
     fetchIncidents();
-
   }, []);
 
   return (
@@ -53,14 +49,15 @@ export const GCPStatus: React.FC = () => {
         incidents={statusData.length > 0}
         onToggle={handleToggle}
       />
-      {statusData.length > 0
-        && statusData.map(incident => (
+      {statusData.length > 0 &&
+        statusData.map(incident => (
           <StyledTableExpandedRow
             key={incident.id}
             service={incident.service_name}
             status={
               <>
-                <b>{incident.status_impact}</b><br/>
+                <b>{incident.status_impact}</b>
+                <br />
                 {incident.external_desc}
               </>
             }
@@ -68,8 +65,7 @@ export const GCPStatus: React.FC = () => {
             link={`https://status.cloud.google.com/${incident.uri}`}
             isOpen={open}
           />
-        ))
-      }
+        ))}
     </>
   );
 };

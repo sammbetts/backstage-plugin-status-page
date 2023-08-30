@@ -5,8 +5,8 @@ export const useStatusData = (fetchURL: string, service: string) => {
 
   useEffect(() => {
     fetch(fetchURL)
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         const { status, page, incidents } = data;
         setStatusData({
           status: status.description,
@@ -14,8 +14,8 @@ export const useStatusData = (fetchURL: string, service: string) => {
           incidents: incidents,
         });
       })
-      .catch((error) => {
-        `Error fetching ${service} service status: ${error}`
+      .catch(error => {
+        `Error fetching ${service} service status: ${error}`;
       });
   }, []);
 

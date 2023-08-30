@@ -1,14 +1,14 @@
-import React from "react";
-import {
-  StyledTableRow,
-  StyledTableExpandedRow,
-} from "../StyledTable";
+import React from 'react';
+import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
-import Atlassian from "../../assets/atlassian.png";
+import Atlassian from '../../assets/atlassian.png';
 
 export const AtlassianStatus: React.FC = () => {
   const [open, setOpen] = React.useState(false);
-  const statusData = useStatusData("https://status.atlassian.com/api/v2/summary.json", "Atlassian")
+  const statusData = useStatusData(
+    'https://status.atlassian.com/api/v2/summary.json',
+    'Atlassian',
+  );
 
   const handleToggle = () => {
     setOpen(!open);
@@ -16,7 +16,7 @@ export const AtlassianStatus: React.FC = () => {
 
   return (
     <>
-      {statusData &&
+      {statusData && (
         <StyledTableRow
           service="Atlassian"
           status={statusData.status}
@@ -26,14 +26,15 @@ export const AtlassianStatus: React.FC = () => {
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
         />
-      }
+      )}
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
           key={incident.incident_id}
           service={incident.components[0].name}
           status={
             <>
-              <b>{incident.name}</b><br/>
+              <b>{incident.name}</b>
+              <br />
               {incident.incident_updates[0].body}
             </>
           }

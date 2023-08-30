@@ -1,6 +1,6 @@
-import React from "react";
-import { Content, Header, Page } from "@backstage/core-components";
-import { Table, makeStyles } from "@material-ui/core";
+import React from 'react';
+import { Content, Header, Page } from '@backstage/core-components';
+import { Table, makeStyles } from '@material-ui/core';
 import {
   AtlassianStatus,
   CircleCIStatus,
@@ -9,11 +9,11 @@ import {
   GitHubStatus,
   GCPStatus,
   SlackStatus,
-} from "..";
+} from '..';
 
 const useStyles = makeStyles({
   content: {
-    padding: "40px 80px 40px 80px",
+    padding: '40px 80px 40px 80px',
   },
 });
 
