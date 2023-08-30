@@ -13,6 +13,7 @@ interface Incident {
   external_desc: string;
   status_impact: string;
   modified: string;
+  uri: string;
   end: string;
 }
 
@@ -39,6 +40,7 @@ export const GCPStatus: React.FC = () => {
       }
     }
     fetchIncidents();
+
   }, []);
 
   return (
@@ -63,7 +65,7 @@ export const GCPStatus: React.FC = () => {
               </>
             }
             updated={convertToUKDateTimeFormat(incident.modified)}
-            link=""
+            link={`https://status.cloud.google.com/${incident.uri}`}
             isOpen={open}
           />
         ))

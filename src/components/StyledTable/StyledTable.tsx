@@ -1,8 +1,10 @@
 import React from "react";
 import {
   Avatar,
+  Box,
   Collapse,
   IconButton,
+  Link,
   Table,
   TableCell,
   TableRow,
@@ -40,6 +42,13 @@ const useStyles = makeStyles({
   serviceIcon: {
     display: "flex",
     alignItems: "center",
+    fontWeight: "bold",
+  },
+  emptyIcon: {
+    margin: "0 10px 0 10px",    
+    padding: "12px",
+    minWidth: "72px",
+    minHeight: "72px",
   },
   icon: {
     width: "3rem",
@@ -66,7 +75,7 @@ const useStyles = makeStyles({
 const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: "10px",
+      padding: "15px 30px 15px 15px",
       fontSize: "1rem",
       width: "350px",
       borderBottom: "1.5px groove #F3F3F3",
@@ -78,7 +87,7 @@ const StyledTableCell = withStyles(() =>
 const StyledTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: "25px 40px 25px 10px",
+      padding: "15px 30px 15px 15px",
       color: "grey",
       width: "350px",
     },
@@ -88,7 +97,7 @@ const StyledTableCellExpanded = withStyles(() =>
 const StyledSmallTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: "10px",
+      padding: "15px",
       color: "grey",
       width: "170px",
       borderBottom: "1.5px groove #F3F3F3",
@@ -100,7 +109,7 @@ const StyledSmallTableCell = withStyles(() =>
 const StyledSmallTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: "10px",
+      padding: "15px",
       color: "grey",
       width: "170px",
     },
@@ -108,20 +117,26 @@ const StyledSmallTableCellExpanded = withStyles(() =>
 )(TableCell);
 
 export const StyledTableExpandedRow = (props: Props) => {
-  const { service, status, updated, isOpen } = props;
+  const { service, status, updated, link, isOpen } = props;
   const classes = useStyles();
 
   return (
     <TableRow>
-      <TableCell style={{ padding: 0 }} colSpan={3}>
+      <TableCell style={{ padding: 0 }} colSpan={4}>
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <Table>
             <StyledTableCellExpanded>
-              <Typography className={classes.product}>{service}</Typography>
+              <div className={classes.serviceIcon}>
+                <Box className={classes.emptyIcon}/>
+                {service}
+              </div>
             </StyledTableCellExpanded>
             <StyledTableCellExpanded>{status}</StyledTableCellExpanded>
             <StyledSmallTableCellExpanded>
               {updated}
+            </StyledSmallTableCellExpanded>
+            <StyledSmallTableCellExpanded>
+              <Link href={link} target="_blank" style={{marginLeft: '20%'}}>More...</Link>
             </StyledSmallTableCellExpanded>
           </Table>
         </Collapse>
@@ -141,7 +156,7 @@ export const StyledTableRow = (props: Props) => {
         <StyledTableCell className={classes.service}>
           <div className={classes.serviceIcon}>
             <IconButton
-              style={{ margin: "0 10px 0 15px" }}
+              style={{ margin: "0 10px 0 10px" }}
               href={link}
               target="_blank"
             >

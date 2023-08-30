@@ -55,7 +55,7 @@ export const SlackStatus: React.FC = () => {
             </>
           }
           updated={convertToUKDateTimeFormat(incident.date_updated)}
-          link=""
+          link={incident.url}
           isOpen={open}
         />
       ))}
