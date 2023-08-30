@@ -3,7 +3,7 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from "../StyledTable";
-import { convertToUKDateTimeFormat, useStatusData } from '../utils';
+import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import CircleCI from "../../assets/circleci.png";
 
 export const CircleCIStatus: React.FC = () => {
@@ -24,9 +24,7 @@ export const CircleCIStatus: React.FC = () => {
           updated={convertToUKDateTimeFormat(statusData.updated)}
           link="https://status.circleci.com/"
           logo={CircleCI}
-          incidents={
-            statusData.status === "All Systems Operational" ? false : true
-          }
+          incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
         />
       }

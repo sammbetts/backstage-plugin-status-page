@@ -3,12 +3,12 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from "../StyledTable";
-import DataDog from "../../assets/datadog.png";
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
+import Atlassian from "../../assets/atlassian.png";
 
-export const DataDogStatus: React.FC = () => {
+export const AtlassianStatus: React.FC = () => {
   const [open, setOpen] = React.useState(false);
-  const statusData = useStatusData("https://status.datadoghq.com/api/v2/summary.json", "DataDog")
+  const statusData = useStatusData("https://status.atlassian.com/api/v2/summary.json", "Atlassian")
 
   const handleToggle = () => {
     setOpen(!open);
@@ -18,11 +18,11 @@ export const DataDogStatus: React.FC = () => {
     <>
       {statusData &&
         <StyledTableRow
-          service="DataDog"
+          service="Atlassian"
           status={statusData.status}
           updated={convertToUKDateTimeFormat(statusData.updated)}
-          link="https://status.datadoghq.com/"
-          logo={DataDog}
+          link="https://status.atlassian.com/"
+          logo={Atlassian}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
         />

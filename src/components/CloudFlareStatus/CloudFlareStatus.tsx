@@ -3,7 +3,7 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from '../StyledTable';
-import { convertToUKDateTimeFormat, useStatusData } from '../utils';
+import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import CloudFlare from '../../assets/cloudflare.png';
 
 export const CloudFlareStatus: React.FC = () => {

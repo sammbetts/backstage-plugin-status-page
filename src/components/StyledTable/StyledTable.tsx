@@ -42,8 +42,8 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   icon: {
-    width: "3.3rem",
-    height: "3.3rem",
+    width: "3rem",
+    height: "3rem",
   },
   incident: {
     color: "red",

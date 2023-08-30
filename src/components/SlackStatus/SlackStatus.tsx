@@ -3,7 +3,7 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from '../StyledTable';
-import { convertToUKDateTimeFormat } from '../utils';
+import { convertToUKDateTimeFormat } from '../../utils';
 import Slack from '../../assets/slack.png';
 
 export const SlackStatus: React.FC = () => {
@@ -45,7 +45,7 @@ export const SlackStatus: React.FC = () => {
       }
       {statusData?.incidents.map((incident: any) => (
         <StyledTableExpandedRow
-          key={incident.incident_id}
+          key={incident.id}
           service={incident.services.join(', ')}
           status={
             <>

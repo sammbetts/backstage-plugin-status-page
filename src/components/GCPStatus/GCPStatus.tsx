@@ -4,13 +4,14 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from '../StyledTable';
-import { convertToUKDateTimeFormat } from '../utils';
+import { convertToUKDateTimeFormat } from '../../utils';
 import GCP from '../../assets/gcp.png';
 
 interface Incident {
-  incident_id: string;
+  id: string;
   service_name: string;
   external_desc: string;
+  status_impact: string;
   modified: string;
   end: string;
 }
@@ -53,9 +54,14 @@ export const GCPStatus: React.FC = () => {
       {statusData.length > 0
         && statusData.map(incident => (
           <StyledTableExpandedRow
-            key={incident.incident_id}
+            key={incident.id}
             service={incident.service_name}
-            status={incident.external_desc}
+            status={
+              <>
+                <b>{incident.status_impact}</b><br/>
+                {incident.external_desc}
+              </>
+            }
             updated={convertToUKDateTimeFormat(incident.modified)}
             link=""
             isOpen={open}

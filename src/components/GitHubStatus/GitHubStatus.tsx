@@ -3,7 +3,7 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from "../StyledTable";
-import { convertToUKDateTimeFormat, useStatusData } from '../utils';
+import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import Github from "../../assets/github.png";
 
 export const GitHubStatus: React.FC = () => {
