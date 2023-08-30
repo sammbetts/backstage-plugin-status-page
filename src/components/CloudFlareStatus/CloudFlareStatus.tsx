@@ -3,32 +3,16 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from '../StyledTable';
-import { convertToUKDateTimeFormat } from '../utils';
+import { convertToUKDateTimeFormat, useStatusData } from '../utils';
 import CloudFlare from '../../assets/cloudflare.png';
 
 export const CloudFlareStatus: React.FC = () => {
-  const [statusData, setStatusData] = React.useState<any | null>(null);
   const [open, setOpen] = React.useState(false);
+  const statusData = useStatusData('https://www.cloudflarestatus.com/api/v2/summary.json', 'CloudFlare');
 
   const handleToggle = () => {
     setOpen(!open);
   };
-
-  React.useEffect(() => {
-    fetch('https://www.cloudflarestatus.com/api/v2/summary.json')
-      .then(response => response.json())
-      .then(data => {
-        const { status, page, incidents } = data;
-        setStatusData({
-          status: status.description,
-          updated: page.updated_at,
-          incidents: incidents,
-        });
-      })
-      .catch(error => {
-        <div>Error fetching CloudFlare service status: {error}</div>;
-      });
-  }, []);
 
   return (
     <>

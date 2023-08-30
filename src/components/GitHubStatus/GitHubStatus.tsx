@@ -2,33 +2,17 @@ import React from "react";
 import {
   StyledTableRow,
   StyledTableExpandedRow,
-  convertToUKDateTimeFormat,
 } from "../StyledTable";
+import { convertToUKDateTimeFormat, useStatusData } from '../utils';
 import Github from "../../assets/github.png";
 
 export const GitHubStatus: React.FC = () => {
-  const [statusData, setStatusData] = React.useState<any | null>(null);
   const [open, setOpen] = React.useState(false);
+  const statusData = useStatusData("https://www.githubstatus.com/api/v2/summary.json", "GitHub")
 
   const handleToggle = () => {
     setOpen(!open);
   };
-
-  React.useEffect(() => {
-    fetch("https://www.githubstatus.com/api/v2/summary.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const { status, page, incidents } = data;
-        setStatusData({
-          status: status.description,
-          updated: page.updated_at,
-          incidents: incidents,
-        });
-      })
-      .catch((error) => {
-        <div>Error fetching GitHub service status: {error}</div>;
-      });
-  }, []);
 
   return (
     <>

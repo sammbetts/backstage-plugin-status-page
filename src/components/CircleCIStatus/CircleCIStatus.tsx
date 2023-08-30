@@ -3,32 +3,17 @@ import {
   StyledTableRow,
   StyledTableExpandedRow,
 } from "../StyledTable";
-import { convertToUKDateTimeFormat } from '../utils';
+import { convertToUKDateTimeFormat, useStatusData } from '../utils';
 import CircleCI from "../../assets/circleci.png";
 
 export const CircleCIStatus: React.FC = () => {
-  const [statusData, setStatusData] = React.useState<any | null>(null);
   const [open, setOpen] = React.useState(false);
+
+  const statusData = useStatusData("https://status.circleci.com/api/v2/summary.json", "CircleCI")
 
   const handleToggle = () => {
     setOpen(!open);
   };
-
-  React.useEffect(() => {
-    fetch("https://status.circleci.com/api/v2/summary.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const { status, page, incidents } = data;
-        setStatusData({
-          status: status.description,
-          updated: page.updated_at,
-          incidents: incidents,
-        });
-      })
-      .catch((error) => {
-        <div>Error fetching CircleCI service status: {error}</div>;
-      });
-  }, []);
 
   return (
     <>
