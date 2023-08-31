@@ -36,15 +36,11 @@ prettier:
         uses: tj-actions/changed-files@v37
         with:
           files: |
-            *.nix
             **/*.md
             **/*.yml
             **/*.yaml
             **/*.ts
             **/*.js
-            **/*.sass
-            **/*.css
-            **/*.scss
             **/*.html
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
