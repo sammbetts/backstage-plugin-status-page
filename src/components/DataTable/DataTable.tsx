@@ -8,6 +8,7 @@ import {
   DataDogStatus,
   GitHubStatus,
   GCPStatus,
+  HashiCorpStatus,
   SlackStatus,
 } from '..';
 
@@ -34,6 +35,7 @@ export const DataTable = () => {
           <DataDogStatus />
           <GitHubStatus />
           <GCPStatus />
+          <HashiCorpStatus />
           <SlackStatus />
         </Table>
       </Content>

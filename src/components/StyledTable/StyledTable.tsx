@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Avatar,
-  Box,
   Collapse,
   IconButton,
   Link,
@@ -34,21 +33,19 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
     fontSize: '1.1rem',
   },
-  product: {
-    fontWeight: 'bold',
-    fontSize: '0.9rem',
-    marginLeft: '100px',
-  },
   serviceIcon: {
     display: 'flex',
     alignItems: 'center',
     fontWeight: 'bold',
   },
-  emptyIcon: {
-    margin: '0 10px 0 10px',
-    padding: '12px',
-    minWidth: '72px',
-    minHeight: '72px',
+  incidentService: {
+    marginLeft: '83px',
+    fontWeight: 'bold',
+  },
+  moreLink: {
+    marginLeft: '22%',
+    width: '100px',
+    fontSize: '1rem',
   },
   icon: {
     width: '3rem',
@@ -75,7 +72,7 @@ const useStyles = makeStyles({
 const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: '15px 30px 15px 15px',
+      padding: '8px 30px 8px 15px',
       fontSize: '1rem',
       width: '350px',
       borderBottom: '1.5px groove #F3F3F3',
@@ -87,7 +84,7 @@ const StyledTableCell = withStyles(() =>
 const StyledTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: '15px 30px 15px 15px',
+      padding: '10px 30px 10px 15px',
       color: 'grey',
       width: '350px',
     },
@@ -97,7 +94,7 @@ const StyledTableCellExpanded = withStyles(() =>
 const StyledSmallTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: '15px',
+      padding: '10px',
       color: 'grey',
       width: '170px',
       borderBottom: '1.5px groove #F3F3F3',
@@ -109,7 +106,7 @@ const StyledSmallTableCell = withStyles(() =>
 const StyledSmallTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: '15px',
+      padding: '10px',
       color: 'grey',
       width: '170px',
     },
@@ -126,19 +123,18 @@ export const StyledTableExpandedRow = (props: Props) => {
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <Table>
             <StyledTableCellExpanded>
-              <div className={classes.serviceIcon}>
-                <Box className={classes.emptyIcon} />
-                {service}
-              </div>
+              <div className={classes.incidentService}>{service}</div>
             </StyledTableCellExpanded>
             <StyledTableCellExpanded>{status}</StyledTableCellExpanded>
             <StyledSmallTableCellExpanded>
               {updated}
             </StyledSmallTableCellExpanded>
             <StyledSmallTableCellExpanded>
-              <Link href={link} target="_blank" style={{ marginLeft: '20%' }}>
-                More...
-              </Link>
+              <div className={classes.moreLink}>
+                <Link href={link} target="_blank">
+                  More...
+                </Link>
+              </div>
             </StyledSmallTableCellExpanded>
           </Table>
         </Collapse>
