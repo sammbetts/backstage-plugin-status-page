@@ -39,7 +39,7 @@ export const CloudFlareStatus: React.FC = () => {
             </>
           }
           updated={convertToUKDateTimeFormat(incident.updated_at)}
-          link=""
+          link={incident.shortlink}
           isOpen={open}
         />
       ))}
