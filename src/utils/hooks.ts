@@ -76,7 +76,7 @@ export const useGCPStatusData = (fetchURL: string) => {
         );
         setStatusData(ongoingIncidents);
       } catch (error) {
-        throw new Error(error);
+        throw new Error(`Error fetching GCP service status: ${error}`);
       }
     }
     fetchIncidents();
