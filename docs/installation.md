@@ -32,3 +32,15 @@ Add the **Status Page** icon to the Sidebar in `packages/app/src/components/Root
     ...
   </SideGroup>
 ```
+
+To use the Widget, add to your home/landing page:
+
+```bash
+import { StatusWidget } from '@sammbetts/backstage-plugin-status-page';
+
+...
+<Grid item>
+  <StatusWidget title="Status Overview"/>
+</Grid>
+...
+```

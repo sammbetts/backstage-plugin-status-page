@@ -12,7 +12,6 @@ export const SlackStatus: React.FC = () => {
 
   const statusData = useSlackStatusData(
     'https://status.slack.com/api/v2.0.0/current',
-    'Slack',
   );
 
   const handleToggle = () => {
@@ -60,7 +59,6 @@ export const SlackStatus: React.FC = () => {
 export const SlackStatusWidget: React.FC = () => {
   const statusData = useSlackStatusData(
     'https://status.slack.com/api/v2.0.0/current',
-    'Slack',
   );
 
   return (

@@ -38,7 +38,7 @@ export const useStatusData = (fetchURL: string, service: string) => {
   return statusData;
 };
 
-export const useSlackStatusData = (fetchURL: string, service: string) => {
+export const useSlackStatusData = (fetchURL: string) => {
   const [statusData, setStatusData] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -54,9 +54,9 @@ export const useSlackStatusData = (fetchURL: string, service: string) => {
         });
       })
       .catch(fetchError => {
-        setError(`Error fetching ${service} service status: ${fetchError}`);
+        setError(`Error fetching Slack service status: ${fetchError}`);
       });
-  }, [fetchURL, service]);
+  }, [fetchURL]);
   if (error) {
     throw new Error(error);
   }
