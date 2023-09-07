@@ -1,43 +1,22 @@
 import React from 'react';
-import axios from 'axios';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
-import { convertToUKDateTimeFormat } from '../../utils';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
+import { convertToUKDateTimeFormat, useGCPStatusData } from '../../utils';
 import GCP from '../../assets/gcp.png';
 
-interface Incident {
-  id: string;
-  service_name: string;
-  external_desc: string;
-  status_impact: string;
-  modified: string;
-  uri: string;
-  end: string;
-}
-
 export const GCPStatus: React.FC = () => {
-  const [statusData, setStatusData] = React.useState<Incident[]>([]);
   const [open, setOpen] = React.useState(false);
+
+  const statusData = useGCPStatusData(
+    'https://status.cloud.google.com/incidents.json',
+  );
 
   const handleToggle = () => {
     setOpen(!open);
   };
-
-  React.useEffect(() => {
-    async function fetchIncidents() {
-      try {
-        const response = await axios.get(
-          'https://status.cloud.google.com/incidents.json',
-        );
-        const ongoingIncidents = response.data.filter(
-          (incident: Incident) => !incident.end,
-        );
-        setStatusData(ongoingIncidents);
-      } catch (error) {
-        <div>Error fetching GCP service status: {error}</div>;
-      }
-    }
-    fetchIncidents();
-  }, []);
 
   return (
     <>
@@ -48,9 +27,10 @@ export const GCPStatus: React.FC = () => {
         logo={GCP}
         incidents={statusData.length > 0}
         onToggle={handleToggle}
+        isOpen={open}
       />
       {statusData.length > 0 &&
-        statusData.map(incident => (
+        statusData.map((incident: any) => (
           <StyledTableExpandedRow
             key={incident.id}
             service={incident.service_name}
@@ -66,6 +46,26 @@ export const GCPStatus: React.FC = () => {
             isOpen={open}
           />
         ))}
+    </>
+  );
+};
+
+export const GCPStatusWidget: React.FC = () => {
+  const statusData = useGCPStatusData(
+    'https://status.cloud.google.com/incidents.json',
+  );
+
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="GCP"
+          updated=""
+          link=""
+          logo={GCP}
+          incidents={statusData.length > 0}
+        />
+      )}
     </>
   );
 };

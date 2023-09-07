@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import Atlassian from '../../assets/atlassian.png';
 
@@ -25,6 +29,7 @@ export const AtlassianStatus: React.FC = () => {
           logo={Atlassian}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
+          isOpen={open}
         />
       )}
       {statusData?.incidents.map((incident: any) => (
@@ -43,6 +48,27 @@ export const AtlassianStatus: React.FC = () => {
           isOpen={open}
         />
       ))}
+    </>
+  );
+};
+
+export const AtlassianStatusWidget: React.FC = () => {
+  const statusData = useStatusData(
+    'https://status.atlassian.com/api/v2/summary.json',
+    'Atlassian',
+  );
+
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="Atlassian"
+          updated=""
+          link=""
+          logo={Atlassian}
+          incidents={statusData.incidents.length > 0}
+        />
+      )}
     </>
   );
 };

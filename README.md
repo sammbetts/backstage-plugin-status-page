@@ -10,17 +10,26 @@ This plugin displays the status and active incidents of third party services dir
 - Real time display of services current status.
 - If an active incident is happening the drop down will appear to display more details.
 - Only the most recent incident update message is displayed.
-- Links to the services full public dashboards.
+- Links to the services full public dashboards and to the specific ongoing incident.
+- A widget to display an overview of the status's on the homepage.
 
 <br/>
 Status page default display:
 
-![img](docs/assets/img1.png)
+![img](docs/assets/2.png)
+
+Dark mode:
+![img](docs/assets/5.png)
 
 When an ongoing incident is happening, the drop down tables become available to open for more information:
 
-![img](docs/assets/img2.png)
+![img](docs/assets/1.png)
 
+Widget:
+![img](docs/assets/4.png)
+
+Widget dark mode:
+![img](docs/assets/3.png)
 ## Getting started
 
 - [Installation instructions](docs/installation.md)

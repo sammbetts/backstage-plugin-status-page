@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import HashiCorp from '../../assets/hashicorp.png';
 
@@ -25,6 +29,7 @@ export const HashiCorpStatus: React.FC = () => {
           logo={HashiCorp}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
+          isOpen={open}
         />
       )}
       {statusData?.incidents.map((incident: any) => (
@@ -43,6 +48,27 @@ export const HashiCorpStatus: React.FC = () => {
           isOpen={open}
         />
       ))}
+    </>
+  );
+};
+
+export const HashiCorpStatusWidget: React.FC = () => {
+  const statusData = useStatusData(
+    'https://status.hashicorp.com/api/v2/summary.json',
+    'HashiCorp',
+  );
+
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="HashiCorp"
+          updated=""
+          link=""
+          logo={HashiCorp}
+          incidents={statusData.incidents.length > 0}
+        />
+      )}
     </>
   );
 };

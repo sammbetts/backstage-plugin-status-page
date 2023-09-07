@@ -1,1 +1,1 @@
-export { SlackStatus } from './SlackStatus';
+export * from './SlackStatus';

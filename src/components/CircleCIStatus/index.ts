@@ -1,1 +1,1 @@
-export { CircleCIStatus } from './CircleCIStatus';
+export * from './CircleCIStatus';

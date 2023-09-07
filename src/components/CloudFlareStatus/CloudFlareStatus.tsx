@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import CloudFlare from '../../assets/cloudflare.png';
 
@@ -25,6 +29,7 @@ export const CloudFlareStatus: React.FC = () => {
           logo={CloudFlare}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
+          isOpen={open}
         />
       )}
       {statusData?.incidents.map((incident: any) => (
@@ -43,6 +48,26 @@ export const CloudFlareStatus: React.FC = () => {
           isOpen={open}
         />
       ))}
+    </>
+  );
+};
+
+export const CloudFlareStatusWidget: React.FC = () => {
+  const statusData = useStatusData(
+    'https://www.cloudflarestatus.com/api/v2/summary.json',
+    'CloudFlare',
+  );
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="CloudFlare"
+          updated=""
+          link=""
+          logo={CloudFlare}
+          incidents={statusData.incidents.length > 0}
+        />
+      )}
     </>
   );
 };

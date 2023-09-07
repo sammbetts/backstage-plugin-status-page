@@ -1,1 +1,1 @@
-export { CloudFlareStatus } from './CloudFlareStatus';
+export * from './CloudFlareStatus';

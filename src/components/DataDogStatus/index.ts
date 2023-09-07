@@ -1,1 +1,1 @@
-export { DataDogStatus } from './DataDogStatus';
+export * from './DataDogStatus';

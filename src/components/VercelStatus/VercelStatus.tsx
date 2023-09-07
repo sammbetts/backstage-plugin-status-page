@@ -5,13 +5,13 @@ import {
   StyledWidgetTableRow,
 } from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
-import DataDog from '../../assets/datadog.png';
+import Vercel from '../../assets/vercel.png';
 
-export const DataDogStatus: React.FC = () => {
+export const VercelStatus: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const statusData = useStatusData(
-    'https://status.datadoghq.com/api/v2/summary.json',
-    'DataDog',
+    'https://www.vercel-status.com/api/v2/summary.json',
+    'Vercel',
   );
 
   const handleToggle = () => {
@@ -22,11 +22,11 @@ export const DataDogStatus: React.FC = () => {
     <>
       {statusData && (
         <StyledTableRow
-          service="DataDog"
+          service="Vercel"
           status={statusData.status}
           updated={convertToUKDateTimeFormat(statusData.updated)}
-          link="https://status.datadoghq.com/"
-          logo={DataDog}
+          link="https://www.vercel-status.com/"
+          logo={Vercel}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
           isOpen={open}
@@ -52,20 +52,20 @@ export const DataDogStatus: React.FC = () => {
   );
 };
 
-export const DataDogStatusWidget: React.FC = () => {
+export const VercelStatusWidget: React.FC = () => {
   const statusData = useStatusData(
-    'https://status.datadoghq.com/api/v2/summary.json',
-    'DataDog',
+    'https://www.vercel-status.com/api/v2/summary.json',
+    'Vercel',
   );
 
   return (
     <>
       {statusData && (
         <StyledWidgetTableRow
-          service="DataDog"
+          service="Vercel"
           updated=""
           link=""
-          logo={DataDog}
+          logo={Vercel}
           incidents={statusData.incidents.length > 0}
         />
       )}

@@ -1,1 +1,1 @@
-export { AtlassianStatus } from './AtlassianStatus';
+export * from './AtlassianStatus';

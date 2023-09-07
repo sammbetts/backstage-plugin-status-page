@@ -14,8 +14,7 @@ import {
 } from '@material-ui/core';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import { IncidentIcon } from '../IncidentIcon';
 
 interface Props {
   service: string;
@@ -31,7 +30,7 @@ interface Props {
 const useStyles = makeStyles({
   service: {
     fontWeight: 'bold',
-    fontSize: '1.1rem',
+    fontSize: '1.2rem',
   },
   serviceIcon: {
     display: 'flex',
@@ -39,11 +38,10 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
   },
   incidentService: {
-    marginLeft: '83px',
+    marginLeft: '88px',
     fontWeight: 'bold',
   },
   moreLink: {
-    marginLeft: '22%',
     width: '100px',
     fontSize: '1rem',
   },
@@ -52,28 +50,16 @@ const useStyles = makeStyles({
     height: '3rem',
   },
   incident: {
-    color: 'red',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  noIncident: {
-    color: 'green',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  incidentIcon: {
-    fontSize: '2rem',
-    fontWeight: 'bold',
+    justifyContent: 'space-between',
   },
 });
 
 const StyledTableCell = withStyles(() =>
   createStyles({
     root: {
-      padding: '8px 30px 8px 15px',
-      fontSize: '1rem',
+      padding: '8px 40px 8px 15px',
       width: '350px',
       borderBottom: '1.5px groove #F3F3F3',
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -84,7 +70,7 @@ const StyledTableCell = withStyles(() =>
 const StyledTableCellExpanded = withStyles(() =>
   createStyles({
     root: {
-      padding: '10px 30px 10px 15px',
+      padding: '15px 40px 15px 15px',
       color: 'grey',
       width: '350px',
     },
@@ -96,7 +82,7 @@ const StyledSmallTableCell = withStyles(() =>
     root: {
       padding: '10px',
       color: 'grey',
-      width: '170px',
+      width: '150px',
       borderBottom: '1.5px groove #F3F3F3',
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
@@ -108,10 +94,38 @@ const StyledSmallTableCellExpanded = withStyles(() =>
     root: {
       padding: '10px',
       color: 'grey',
-      width: '170px',
+      width: '150px',
     },
   }),
 )(TableCell);
+
+const StyledWidgetTableCell = withStyles(() =>
+  createStyles({
+    root: {
+      padding: '5px 30px 5px 30px',
+      fontSize: '1rem',
+      borderBottom: '1.5px groove darkGrey',
+    },
+  }),
+)(TableCell);
+
+export const StyledWidgetTableRow = (props: Props) => {
+  const { service, logo, incidents } = props;
+
+  return (
+    <TableRow>
+      <StyledWidgetTableCell>
+        <Avatar alt="logo" src={logo} />
+      </StyledWidgetTableCell>
+      <StyledWidgetTableCell>
+        <Typography style={{ fontWeight: 'bold' }}>{service}</Typography>
+      </StyledWidgetTableCell>
+      <StyledWidgetTableCell>
+        <IncidentIcon activeIncident={incidents} />
+      </StyledWidgetTableCell>
+    </TableRow>
+  );
+};
 
 export const StyledTableExpandedRow = (props: Props) => {
   const { service, status, updated, link, isOpen } = props;
@@ -166,23 +180,25 @@ export const StyledTableRow = (props: Props) => {
         <StyledTableCell>
           {incidents ? (
             <>
-              {status ? (
-                <Typography style={{ color: 'red' }}>{status}</Typography>
-              ) : (
-                <Typography style={{ color: 'red' }}>
-                  Ongoing Incidents
-                </Typography>
-              )}
+              <Typography style={{ color: 'red' }}>
+                Ongoing Incidents
+              </Typography>
             </>
           ) : (
-            <>{status ? status : <Typography>Normal Service</Typography>}</>
+            <>
+              {status ? (
+                <Typography>{status}</Typography>
+              ) : (
+                <Typography>Normal Service</Typography>
+              )}
+            </>
           )}
         </StyledTableCell>
         <StyledSmallTableCell>{updated}</StyledSmallTableCell>
         <StyledSmallTableCell>
-          {incidents ? (
-            <div className={classes.incident}>
-              <ErrorOutlineIcon className={classes.incidentIcon} />
+          <div className={classes.incident}>
+            <IncidentIcon activeIncident={incidents} />
+            {incidents && (
               <IconButton onClick={onToggle}>
                 {isOpen ? (
                   <KeyboardArrowUpIcon className={classes.icon} />
@@ -190,13 +206,8 @@ export const StyledTableRow = (props: Props) => {
                   <KeyboardArrowDownIcon className={classes.icon} />
                 )}
               </IconButton>
-            </div>
-          ) : (
-            <div className={classes.noIncident}>
-              <CheckCircleOutlineIcon className={classes.incidentIcon} />
-              <div style={{ width: '4.7rem' }} />
-            </div>
-          )}
+            )}
+          </div>
         </StyledSmallTableCell>
       </TableRow>
     </>

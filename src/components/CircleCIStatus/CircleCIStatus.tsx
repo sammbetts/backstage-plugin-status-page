@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
 import CircleCI from '../../assets/circleci.png';
 
@@ -26,6 +30,7 @@ export const CircleCIStatus: React.FC = () => {
           logo={CircleCI}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
+          isOpen={open}
         />
       )}
       {statusData?.incidents.map((incident: any) => (
@@ -44,6 +49,27 @@ export const CircleCIStatus: React.FC = () => {
           isOpen={open}
         />
       ))}
+    </>
+  );
+};
+
+export const CircleCIStatusWidget: React.FC = () => {
+  const statusData = useStatusData(
+    'https://status.circleci.com/api/v2/summary.json',
+    'CircleCI',
+  );
+
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="CircleCI"
+          updated=""
+          link=""
+          logo={CircleCI}
+          incidents={statusData.incidents.length > 0}
+        />
+      )}
     </>
   );
 };

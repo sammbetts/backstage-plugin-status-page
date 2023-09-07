@@ -1,1 +1,1 @@
-export { GCPStatus } from './GCPStatus';
+export * from './GCPStatus';

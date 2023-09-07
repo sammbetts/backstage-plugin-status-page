@@ -1,31 +1,23 @@
 import React from 'react';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
-import { convertToUKDateTimeFormat } from '../../utils';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
+import { convertToUKDateTimeFormat, useSlackStatusData } from '../../utils';
 import Slack from '../../assets/slack.png';
 
 export const SlackStatus: React.FC = () => {
-  const [statusData, setStatusData] = React.useState<any | null>(null);
   const [open, setOpen] = React.useState(false);
+
+  const statusData = useSlackStatusData(
+    'https://status.slack.com/api/v2.0.0/current',
+    'Slack',
+  );
 
   const handleToggle = () => {
     setOpen(!open);
   };
-
-  React.useEffect(() => {
-    fetch('https://status.slack.com/api/v2.0.0/current')
-      .then(response => response.json())
-      .then(data => {
-        const { status, active_incidents, date_updated } = data;
-        setStatusData({
-          status: status,
-          updated: date_updated,
-          incidents: active_incidents,
-        });
-      })
-      .catch(error => {
-        <div>Error fetching Slack service status: {error}</div>;
-      });
-  }, []);
 
   return (
     <>
@@ -40,6 +32,7 @@ export const SlackStatus: React.FC = () => {
           logo={Slack}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
+          isOpen={open}
         />
       )}
       {statusData?.incidents.map((incident: any) => (
@@ -60,6 +53,27 @@ export const SlackStatus: React.FC = () => {
           isOpen={open}
         />
       ))}
+    </>
+  );
+};
+
+export const SlackStatusWidget: React.FC = () => {
+  const statusData = useSlackStatusData(
+    'https://status.slack.com/api/v2.0.0/current',
+    'Slack',
+  );
+
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="Slack"
+          updated=""
+          link=""
+          logo={Slack}
+          incidents={statusData.incidents.length > 0}
+        />
+      )}
     </>
   );
 };

@@ -6,3 +6,5 @@ export * from './GitHubStatus';
 export * from './GCPStatus';
 export * from './HashiCorpStatus';
 export * from './SlackStatus';
+export * from './VercelStatus';
+export * from './DataTable';

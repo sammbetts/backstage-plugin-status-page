@@ -1,7 +1,11 @@
 import React from 'react';
-import { StyledTableRow, StyledTableExpandedRow } from '../StyledTable';
+import {
+  StyledTableRow,
+  StyledTableExpandedRow,
+  StyledWidgetTableRow,
+} from '../StyledTable';
 import { convertToUKDateTimeFormat, useStatusData } from '../../utils';
-import Github from '../../assets/github.png';
+import GitHub from '../../assets/github.png';
 
 export const GitHubStatus: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -22,9 +26,10 @@ export const GitHubStatus: React.FC = () => {
           status={statusData.status}
           updated={convertToUKDateTimeFormat(statusData.updated)}
           link="https://www.githubstatus.com"
-          logo={Github}
+          logo={GitHub}
           incidents={statusData.incidents.length > 0}
           onToggle={handleToggle}
+          isOpen={open}
         />
       )}
       {statusData?.incidents.map((incident: any) => (
@@ -43,6 +48,27 @@ export const GitHubStatus: React.FC = () => {
           isOpen={open}
         />
       ))}
+    </>
+  );
+};
+
+export const GitHubStatusWidget: React.FC = () => {
+  const statusData = useStatusData(
+    'https://www.githubstatus.com/api/v2/summary.json',
+    'GitHub',
+  );
+
+  return (
+    <>
+      {statusData && (
+        <StyledWidgetTableRow
+          service="GitHub"
+          updated=""
+          link=""
+          logo={GitHub}
+          incidents={statusData.incidents.length > 0}
+        />
+      )}
     </>
   );
 };

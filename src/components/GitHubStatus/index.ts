@@ -1,1 +1,1 @@
-export { GitHubStatus } from './GitHubStatus';
+export * from './GitHubStatus';
