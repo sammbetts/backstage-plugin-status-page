@@ -1,5 +1,5 @@
 {
-  "name": "@sammbetts/backstage-plugin-status-page",
+  "name": "@sammbetts/backstage-plugin-service-health-dashboard",
   "description": "A backstage plugin for showing third party status and incidents",
   "version": "0.2.0",
   "repository": "https://github.com/sammbetts/backstage-plugin-status-page.git",

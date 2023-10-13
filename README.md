@@ -1,6 +1,6 @@
 # Backstage Plugin: status-page
 
-Welcome to the status-page plugin for [Backstage!](https://backstage.io/)
+Welcome to the service health plugin for [Backstage!](https://backstage.io/)
 
 This plugin displays the status and active incidents of third party services directly in Backstage.
 
@@ -11,9 +11,11 @@ This plugin displays the status and active incidents of third party services dir
 - If an active incident is happening the drop down will appear to display more details.
 - Only the most recent incident update message is displayed.
 - Links to the services full public dashboards and to the specific ongoing incident.
-- A widget to display an overview of the status's on the homepage.
+- A Card component to display an overview of the status's on the homepage.
+- Ability to enable slack notifications for alerting of new incidents.
 
 <br/>
+
 Status page default display:
 
 ![img](docs/assets/2.png)
@@ -32,5 +34,7 @@ Widget dark mode:
 ![img](docs/assets/3.png)
 ## Getting started
 
-- [Installation instructions](docs/installation.md)
+- [Frontend installation instructions](docs/frontend-installation.md)
+- [Backend installation instructions](docs/backend-installation.md)
+
 - [Contributing guide](docs/contributing.md)
